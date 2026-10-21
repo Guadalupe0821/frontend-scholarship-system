@@ -1,0 +1,49 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header class="login-header">
+      <mat-card-title class="login-title">Sistema de Becas Alimentarias</mat-card-title>
+      <mat-card-subtitle class="login-subtitle">Registro y Autenticación de Alumnos Becarios</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Usuario o correo electrónico</mat-label>
+          <input matInput formControlName="usernameOrEmail" autocomplete="username" />
+          @if (loginForm.get('usernameOrEmail')?.hasError('required')) {
+            <mat-error>Este campo es obligatorio</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [type]="hidePassword() ? 'password' : 'text'"
+            formControlName="password"
+            autocomplete="current-password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="togglePassword()"
+            [attr.aria-label]="hidePassword() ? 'Mostrar contraseña' : 'Ocultar contraseña'"
+          >
+            <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          @if (loginForm.get('password')?.hasError('required')) {
+            <mat-error>Este campo es obligatorio</mat-error>
+          }
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit" class="login-button" [disabled]="loading()">
+          @if (loading()) {
+            <mat-icon class="spinning">autorenew</mat-icon>
+          }
+          <span>{{ loading() ? 'Iniciando sesión...' : 'Iniciar sesión' }}</span>
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

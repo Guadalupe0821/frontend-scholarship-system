@@ -1,0 +1,24 @@
+<mat-card class="kpi-card" appearance="outlined">
+  <mat-card-content>
+    <div class="kpi-layout">
+      @if (icon()) {
+        <mat-icon class="kpi-icon" aria-hidden="true">{{ icon() }}</mat-icon>
+      }
+      <div class="kpi-body">
+        <p class="kpi-title">{{ title() }}</p>
+        <div class="kpi-value-row">
+          <p class="kpi-value">{{ value() }}</p>
+          @if (period()) {
+            <span class="kpi-period">{{ period() }}</span>
+          }
+        </div>
+        @if (change()) {
+          <span class="kpi-change" [class.kpi-change--up]="trendUp()" [class.kpi-change--down]="!trendUp()">
+            <mat-icon aria-hidden="true">{{ trendUp() ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+            {{ changeLabel() }}
+          </span>
+        }
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

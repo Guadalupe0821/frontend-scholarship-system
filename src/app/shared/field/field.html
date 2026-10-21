@@ -1,0 +1,186 @@
+<section [formGroup]="formGroup()">
+  @switch (field().type) {
+    @case ('text') {
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>{{ field().label }}</mat-label>
+        <input
+          matInput
+          [readonly]="field().readonly ?? false"
+          type="text"
+          [formControlName]="field().name"
+          [placeholder]="field().placeholder || ''"
+          [maxlength]="field().maxLength ?? null"
+          (input)="onInputChange($event)"
+        />
+        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+          <mat-error>
+            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+          </mat-error>
+        }
+        @if (formGroup().get(field().name)?.hasError('pattern') && formGroup().get(field().name)?.touched) {
+          <mat-error>
+            {{ field().errorMessages?.['pattern'] || 'El formato de ' + field().label + ' no es valido' }}
+          </mat-error>
+        }
+        @if (formGroup().get(field().name)?.hasError('maxlength')) {
+          <mat-error>
+            {{ field().errorMessages?.['maxlength'] || 'El campo ' + field().label + ' es demasiado largo' }}
+          </mat-error>
+        }
+      </mat-form-field>
+    }
+    @case ('password') {
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>{{ field().label }}</mat-label>
+        <input
+          matInput
+          [readonly]="field().readonly ?? false"
+          [type]="hidePassword() ? 'password' : 'text'"
+          [formControlName]="field().name"
+          [placeholder]="field().placeholder || ''"
+          [maxlength]="field().maxLength ?? null"
+          (input)="onInputChange($event)"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="togglePasswordVisibility($event)"
+          [attr.aria-label]="hidePassword() ? 'Mostrar contraseña' : 'Ocultar contraseña'"
+          [attr.aria-pressed]="!hidePassword()"
+        >
+          <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+          <mat-error>
+            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+          </mat-error>
+        }
+        @if (formGroup().get(field().name)?.hasError('minlength') && formGroup().get(field().name)?.touched) {
+          <mat-error>
+            {{ field().errorMessages?.['minlength'] || 'El campo ' + field().label + ' es demasiado corto' }}
+          </mat-error>
+        }
+        @if (formGroup().get(field().name)?.hasError('maxlength')) {
+          <mat-error>
+            {{ field().errorMessages?.['maxlength'] || 'El campo ' + field().label + ' es demasiado largo' }}
+          </mat-error>
+        }
+      </mat-form-field>
+    }
+    @case ('email') {
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>{{ field().label }}</mat-label>
+        <input
+          matInput
+          [readonly]="field().readonly ?? false"
+          type="email"
+          [formControlName]="field().name"
+          [placeholder]="field().placeholder || ''"
+          [maxlength]="field().maxLength ?? null"
+          (input)="onInputChange($event)"
+        />
+        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+          <mat-error>
+            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+          </mat-error>
+        }
+        @if (formGroup().get(field().name)?.hasError('email') && formGroup().get(field().name)?.touched) {
+          <mat-error>
+            {{ field().errorMessages?.['email'] || 'Ingrese un email válido' }}
+          </mat-error>
+        }
+      </mat-form-field>
+    }
+    @case ('number') {
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>{{ field().label }}</mat-label>
+        <input
+          matInput
+          [readonly]="field().readonly ?? false"
+          type="number"
+          [formControlName]="field().name"
+          [placeholder]="field().placeholder || ''"
+          [min]="field().min ?? null"
+          [max]="field().max ?? null"
+          (input)="onInputChange($event)"
+        />
+        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+          <mat-error>
+            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+          </mat-error>
+        }
+        @if (formGroup().get(field().name)?.hasError('min')) {
+          <mat-error>
+            {{ field().errorMessages?.['min'] || 'El valor mínimo es ' + field().min }}
+          </mat-error>
+        }
+        @if (formGroup().get(field().name)?.hasError('max')) {
+          <mat-error>
+            {{ field().errorMessages?.['max'] || 'El valor máximo es ' + field().max }}
+          </mat-error>
+        }
+      </mat-form-field>
+    }
+    @case ('boolean') {
+      <section class="flex flex-col p-4">
+        <div class="flex items-center gap-4 flex-wrap sm:flex-nowrap">
+          <label class="flex-1 min-w-[50px] break-words" [for]="field().name">
+            {{ field().label }}
+          </label>
+          <section class="flex-shrink-0">
+            <mat-slide-toggle
+              [id]="field().name"
+              [formControlName]="field().name"
+              [attr.aria-label]="field().label"
+              (change)="onSlideToggleChange($event)"
+            />
+          </section>
+        </div>
+      </section>
+    }
+    @case ('date') {
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>{{ field().label }}</mat-label>
+        <input
+          matInput
+          [readonly]="field().readonly ?? false"
+          [matDatepicker]="datepicker"
+          [formControlName]="field().name"
+          [max]="maxDate"
+          [placeholder]="field().placeholder || 'DD/MM/AAAA'"
+          (dateChange)="onDateChange($event)"
+        />
+        <mat-datepicker-toggle matSuffix [for]="datepicker" />
+        <mat-datepicker #datepicker />
+        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+          <mat-error>
+            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+          </mat-error>
+        }
+      </mat-form-field>
+    }
+    @case ('select') {
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>{{ field().label }}</mat-label>
+        <mat-select
+          [formControlName]="field().name"
+          [placeholder]="field().placeholder || ''"
+          (selectionChange)="onSelectChange($event)"
+        >
+          @for (option of field().options; track option.value) {
+            <mat-option [value]="option.value">{{ option.label }}</mat-option>
+          }
+        </mat-select>
+        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+          <mat-error>
+            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+          </mat-error>
+        }
+      </mat-form-field>
+    }
+    @default {
+      <p>Tipo de campo no soportado: {{ field().type }}</p>
+    }
+  }
+</section>

@@ -1,0 +1,257 @@
+@use '@angular/material' as mat;
+
+$rui-elevation-1: 0 1px 3px hsla(0, 0%, 0%, 0.2);
+$rui-elevation-2: 0 4px 6px hsla(0, 0%, 0%, 0.2);
+$rui-elevation-3: 0 5px 15px hsla(0, 0%, 0%, 0.2);
+$rui-elevation-4: 0 10px 24px hsla(0, 0%, 0%, 0.2);
+$rui-elevation-5: 0 15px 35px hsla(0, 0%, 0%, 0.2);
+
+:host {
+  display: block;
+}
+
+.table-container {
+  width: 100%;
+  // padding: 1rem;
+  box-sizing: border-box;
+
+  .filter-field {
+    @include mat.form-field-overrides(
+      (
+        container-height: 40px,
+        container-text-size: 14px,
+        container-text-line-height: 18px,
+      )
+    );
+
+    width: 100%;
+
+    ::ng-deep .mat-mdc-form-field-infix {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--app-border-color);
+
+    table {
+      width: 100%;
+      background-color: var(--app-surface-color);
+
+      th {
+        font-weight: 500;
+        background-color: var(--mat-sys-surface-container);
+        color: var(--mat-sys-on-surface);
+        border-bottom: 1px solid var(--app-border-color);
+      }
+
+      td {
+        border-bottom: 1px solid var(--app-border-color);
+
+        color: var(--app-table-text-color);
+
+        &.mat-column-select {
+          width: 50px;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+      }
+
+      th.mat-column-select {
+        width: 50px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      .table-row {
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: var(--mat-sys-surface-container-low);
+        }
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+    }
+  }
+
+  mat-paginator {
+    background-color: transparent;
+    color: var(--mat-sys-on-surface);
+  }
+
+  .bold-text {
+    font-weight: 400;
+    color: var(--app-table-text-bold-color);
+  }
+
+  .row-alert-message {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.6875rem;
+    color: var(--app-status-warning-color);
+
+    mat-icon {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .cell-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .sublabel {
+      font-size: 0.75rem;
+      color: var(--mat-sys-on-surface-variant);
+      opacity: 0.7;
+    }
+
+    &.navigable-cell {
+      /* Quitar aspecto de botón nativo (borde relieve / fondo del UA) */
+      appearance: none;
+      border: none;
+      background: transparent;
+      font: inherit;
+      text-align: inherit;
+      color: inherit;
+      cursor: pointer;
+      border-radius: 4px;
+      padding: 4px 8px;
+      margin: -4px -8px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: var(--mat-sys-primary-container);
+      }
+
+      &:focus {
+        outline: 2px solid var(--mat-sys-primary);
+        outline-offset: 2px;
+      }
+
+      span {
+        color: var(--mat-sys-primary);
+      }
+    }
+  }
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &[data-status='ACTIVO'],
+  &[data-status='Activo'],
+  &[data-status='activo'],
+  &[data-status='Activa'],
+  &[data-status='ACTIVA'],
+  &[data-status='activa'] {
+    background-color: var(--app-status-active-bg);
+    color: var(--app-status-active-color);
+  }
+
+  &[data-status='PENDIENTE'],
+  &[data-status='Pendiente'],
+  &[data-status='pendiente'] {
+    background-color: var(--app-status-pending-bg);
+    color: var(--app-status-pending-color);
+  }
+
+  &[data-status='INACTIVO'],
+  &[data-status='Inactivo'],
+  &[data-status='inactivo'],
+  &[data-status='Inactiva'],
+  &[data-status='INACTIVA'],
+  &[data-status='inactiva'],
+  &[data-status='Deshabilitada'] {
+    background-color: var(--app-status-inactive-bg);
+    color: var(--app-status-inactive-color);
+  }
+
+  &[data-status='BLOQUEADO'],
+  &[data-status='Bloqueado'],
+  &[data-status='bloqueado'],
+  &[data-status='Bloqueada'],
+  &[data-status='BLOQUEADA'],
+  &[data-status='bloqueada'] {
+    background-color: var(--app-status-blocked-bg);
+    color: var(--app-status-blocked-color);
+  }
+
+  &[data-status='APROBADAS'],
+  &[data-status='Aprobadas'],
+  &[data-status='aprobadas'],
+  &[data-status='APROBADA'],
+  &[data-status='Aprobada'],
+  &[data-status='aprobada'] {
+    background-color: var(--app-status-active-bg);
+    color: var(--app-status-active-color);
+  }
+
+  &[data-status='APROBADA PARCIALMENTE'],
+  &[data-status='Aprobada parcialmente'],
+  &[data-status='aprobada parcialmente'] {
+    background-color: var(--app-status-pending-bg);
+    color: var(--app-status-pending-color);
+  }
+
+  &[data-status='RECHAZADA'],
+  &[data-status='Rechazada'],
+  &[data-status='rechazada'],
+  &[data-status='RECHAZADAS'],
+  &[data-status='Rechazadas'],
+  &[data-status='rechazadas'] {
+    background-color: var(--app-status-blocked-bg);
+    color: var(--app-status-blocked-color);
+  }
+
+  &[data-status='DEFINITIVO'] {
+    background-color: var(--app-status-critical-bg);
+    color: var(--app-status-critical-color);
+  }
+
+  &[data-status='PRESUNTO'] {
+    background-color: var(--app-status-warning-bg);
+    color: var(--app-status-warning-color);
+  }
+
+  &[data-status='DESVIRTUADO'] {
+    background-color: var(--app-status-active-bg);
+    color: var(--app-status-active-color);
+  }
+
+  &[data-status='SENTENCIA'] {
+    background-color: var(--app-status-info-bg);
+    color: var(--app-status-info-color);
+  }
+}
+
+.table-toolbar {
+  box-sizing: border-box;
+  margin-bottom: 20px;
+
+  &:empty {
+    display: none;
+    margin-bottom: 0;
+  }
+}

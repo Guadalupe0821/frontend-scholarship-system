@@ -1,0 +1,50 @@
+<app-page-header title="Usuarios" icon="people"></app-page-header>
+
+<main>
+  <div class="filters-container">
+    @if (isSuperadmin()) {
+      <mat-form-field appearance="outline">
+        <mat-label>Cafetería</mat-label>
+        <mat-select [(ngModel)]="selectedTenant">
+          <mat-option value="all">Todas</mat-option>
+          @for (tenant of tenants; track tenant.id) {
+            <mat-option [value]="tenant.id">{{ tenant.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    }
+
+    <mat-form-field appearance="outline">
+      <mat-label>Rol</mat-label>
+      <mat-select [(ngModel)]="selectedRole">
+        <mat-option value="all">Todos</mat-option>
+        <mat-option value="Admin">Admin</mat-option>
+        <mat-option value="Checker">Checker</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Estado</mat-label>
+      <mat-select [(ngModel)]="selectedStatus">
+        <mat-option value="all">Todos</mat-option>
+        <mat-option value="active">Activo</mat-option>
+        <mat-option value="inactive">Inactivo</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <app-table
+    [columns]="columns"
+    [data]="filteredUsers()"
+    [actions]="actions"
+    [showFilter]="true"
+    [showPagination]="true"
+  >
+    <div tableToolbar>
+      <button mat-flat-button color="primary" (click)="newUser()">
+        <mat-icon>add</mat-icon>
+        Nuevo Usuario
+      </button>
+    </div>
+  </app-table>
+</main>

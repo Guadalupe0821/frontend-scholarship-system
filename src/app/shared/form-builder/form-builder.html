@@ -1,0 +1,19 @@
+<section>
+  @if (fields()) {
+    <form [formGroup]="formGroup">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+        @for (field of fields(); track field.name) {
+          <div [class]="field.grids || 'md:col-span-12 col-span-12'">
+            <app-field [field]="field" [formGroup]="formGroup" (valueChange)="emitValueChange($event)" />
+          </div>
+        }
+      </div>
+
+      @if (showButtons()) {
+        <div class="pt-2">
+          <button type="button" mat-raised-button (click)="submitForm()">Enviar</button>
+        </div>
+      }
+    </form>
+  }
+</section>

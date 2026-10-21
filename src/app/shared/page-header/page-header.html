@@ -1,0 +1,16 @@
+<header class="page-header">
+  @if (showBackButton()) {
+    <button mat-icon-button class="back-button" (click)="goBack()" aria-label="Volver">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="separator" aria-hidden="true">|</span>
+  }
+  <section class="header-content">
+    @if (icon()) {
+      <span class="icon-container" aria-hidden="true">
+        <mat-icon class="header-icon">{{ icon() }}</mat-icon>
+      </span>
+    }
+    <h1 class="header-title">{{ title() }}</h1>
+  </section>
+</header>

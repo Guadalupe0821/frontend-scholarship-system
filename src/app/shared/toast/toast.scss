@@ -1,0 +1,116 @@
+// Light palette. The dark values live in the `:host-context` blocks below so the toast
+// follows the same `html.dark-theme` switch the rest of the app uses.
+:host {
+  --app-toast-title: #0f172a;
+  --app-toast-description: #475569;
+  --app-toast-close: #64748b;
+  --app-toast-shadow: 0 10px 24px rgb(15 23 42 / 12%);
+
+  display: block;
+}
+
+:host-context(html.dark-theme) {
+  --app-toast-title: #f8fafc;
+  --app-toast-description: #94a3b8;
+  --app-toast-close: #94a3b8;
+  --app-toast-shadow: 0 10px 24px rgb(0 0 0 / 45%);
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-sizing: border-box;
+  min-width: 320px;
+  max-width: 440px;
+  padding: 16px;
+  border: 1px solid var(--app-toast-border);
+  border-radius: 10px;
+  background-color: var(--app-toast-surface);
+  box-shadow: var(--app-toast-shadow);
+
+  // Tinted surface instead of a saturated fill: the accent reads on the icon and the
+  // border while the copy keeps the contrast it needs to stay readable.
+  &.success {
+    --app-toast-surface: #ecfdf5;
+    --app-toast-border: #a7f3d0;
+    --app-toast-accent: #15803d;
+  }
+
+  &.error {
+    --app-toast-surface: #fef2f2;
+    --app-toast-border: #fecaca;
+    --app-toast-accent: #b91c1c;
+  }
+
+  &.warning {
+    --app-toast-surface: #fffbeb;
+    --app-toast-border: #fde68a;
+    --app-toast-accent: #b45309;
+  }
+
+  &.info {
+    --app-toast-surface: #eff6ff;
+    --app-toast-border: #bfdbfe;
+    --app-toast-accent: #1d4ed8;
+  }
+}
+
+:host-context(html.dark-theme) .toast {
+  &.success {
+    --app-toast-surface: #0f2a1d;
+    --app-toast-border: #1f5133;
+    --app-toast-accent: #4ade80;
+  }
+
+  &.error {
+    --app-toast-surface: #2a1416;
+    --app-toast-border: #5b2327;
+    --app-toast-accent: #f87171;
+  }
+
+  &.warning {
+    --app-toast-surface: #2a2110;
+    --app-toast-border: #5c451a;
+    --app-toast-accent: #fbbf24;
+  }
+
+  &.info {
+    --app-toast-surface: #111f38;
+    --app-toast-border: #1f3d6b;
+    --app-toast-accent: #60a5fa;
+  }
+}
+
+.toast-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--app-toast-accent);
+}
+
+.toast-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--app-toast-title);
+}
+
+.toast-description {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--app-toast-description);
+  overflow-wrap: anywhere;
+}
+
+.toast-close {
+  flex-shrink: 0;
+  margin: -6px -6px 0 0;
+  color: var(--app-toast-close);
+}

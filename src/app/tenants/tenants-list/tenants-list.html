@@ -1,0 +1,18 @@
+<app-page-header title="Cafeterías" icon="store"></app-page-header>
+
+<main>
+  <app-table
+    [columns]="columns"
+    [data]="tenants()"
+    [actions]="actions"
+    [showFilter]="true"
+    [showPagination]="true"
+  >
+    <div tableToolbar>
+      <button mat-flat-button color="primary" (click)="newTenant()">
+        <mat-icon>add</mat-icon>
+        Nueva Cafetería
+      </button>
+    </div>
+  </app-table>
+</main>

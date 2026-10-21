@@ -1,0 +1,51 @@
+:host {
+  display: block;
+}
+
+mat-expansion-panel {
+  box-shadow: none !important;
+  border-radius: 0;
+  background-color: var(--app-sidenav-color);
+  --mat-expansion-header-indicator-color: var(--app-sidenav-text-color);
+
+  mat-expansion-panel-header {
+    border-radius: 0;
+    padding: 0 16px;
+    height: 56px;
+    color: var(--app-sidenav-text-color);
+  }
+
+  mat-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+  }
+
+  span {
+    color: var(--app-sidenav-text-color);
+  }
+
+  mat-icon {
+    color: var(--app-sidenav-text-color);
+  }
+}
+
+mat-list-item,
+a[mat-list-item] {
+  border-radius: 0;
+  height: 56px;
+
+  mat-icon {
+    color: var(--app-sidenav-text-color);
+  }
+
+  span {
+    color: var(--app-sidenav-text-color);
+  }
+}
+
+a.active {
+  background-color: var(--app-active-menu-item-background);
+  border-radius: 0;
+}

@@ -1,0 +1,41 @@
+<app-page-header title="Dashboard" icon="dashboard"></app-page-header>
+
+<main class="dashboard">
+  <div class="kpi-grid">
+    <app-kpi-card
+      title="Cafeterías Activas"
+      value="2"
+      icon="store"
+      period="Total registradas: 3"
+    ></app-kpi-card>
+    <app-kpi-card
+      title="Usuarios Activos"
+      value="2"
+      icon="people"
+      period="Admins + Checkers"
+    ></app-kpi-card>
+    <app-kpi-card
+      title="Checkers"
+      value="1"
+      icon="badge"
+      period="Terminales asignadas"
+    ></app-kpi-card>
+  </div>
+
+  <mat-card appearance="outlined" class="info-card">
+    <mat-card-header>
+      <mat-card-title>Sistema de Becas Alimentarias</mat-card-title>
+      <mat-card-subtitle>Registro y Autenticación de Alumnos Becarios</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Este sistema permite la gestión de cafeterías (Tenants), usuarios con roles Superadmin, Admin y Checker,
+        y está preparado para la futura integración con el módulo biométrico.
+      </p>
+      <p class="muted">
+        <strong>Nota:</strong> Actualmente en modo mock. Cuando se integre el backend, solo es necesario actualizar
+        los servicios para consumir la API REST.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</main>

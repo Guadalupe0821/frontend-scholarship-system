@@ -1,0 +1,22 @@
+@if (hasSubItems()) {
+  <mat-expansion-panel [expanded]="isExpanded()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>{{ icon() }}</mat-icon>
+        <span>{{ title() }}</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    @for (subItem of subItems(); track subItem.route) {
+      <a mat-list-item [routerLink]="subItem.route" routerLinkActive="active">
+        <mat-icon matListItemIcon>{{ subItem.icon }}</mat-icon>
+        <span matListItemTitle>{{ subItem.title }}</span>
+      </a>
+    }
+  </mat-expansion-panel>
+} @else {
+  <a mat-list-item [routerLink]="route()" routerLinkActive="active">
+    <mat-icon matListItemIcon>{{ icon() }}</mat-icon>
+    <span matListItemTitle>{{ title() }}</span>
+  </a>
+}
