@@ -22,7 +22,8 @@ export class PageHeader {
   goBack(): void {
     const breadcrumbParentUrl = this.activatedRoute.snapshot.data['breadcrumbParentUrl'];
     const from = this.activatedRoute.snapshot.queryParamMap.get('from');
-    const backUrl = [this.backUrl(), from, breadcrumbParentUrl].find(isValidBackUrl) ?? NAVIGATION_FALLBACK_URL;
+    const backUrl =
+      [this.backUrl(), from, breadcrumbParentUrl].find(isValidBackUrl) ?? NAVIGATION_FALLBACK_URL;
 
     void this.router.navigateByUrl(backUrl);
   }

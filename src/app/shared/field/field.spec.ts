@@ -23,7 +23,11 @@ describe('Field', () => {
   });
 
   it('should support password field and toggle visibility', () => {
-    fixture.componentRef.setInput('field', { name: 'password', type: 'password', label: 'Password' });
+    fixture.componentRef.setInput('field', {
+      name: 'password',
+      type: 'password',
+      label: 'Password',
+    });
     fixture.componentRef.setInput('formGroup', new FormGroup({ password: new FormControl('') }));
     fixture.detectChanges();
 

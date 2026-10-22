@@ -25,7 +25,11 @@
             <mat-icon aria-hidden="true">menu</mat-icon>
           </button>
           <span class="toolbar-spacer hide-on-mobile-open" aria-hidden="true"></span>
-          <div class="toolbar-actions hide-on-mobile-open" role="group" aria-label="Acciones de la barra superior">
+          <div
+            class="toolbar-actions hide-on-mobile-open"
+            role="group"
+            aria-label="Acciones de la barra superior"
+          >
             <nav class="toolbar-actions-links" aria-label="Secciones de la aplicación">
               @for (section of toolbarSections; track section.id) {
                 <button
@@ -41,10 +45,18 @@
               }
             </nav>
 
-            <app-notification-dropdown [notifications]="notifications()" (viewAll)="allNotifications()" />
+            <app-notification-dropdown
+              [notifications]="notifications()"
+              (viewAll)="allNotifications()"
+            />
             <app-theme-toggle />
 
-            <button type="button" mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Mi perfil">
+            <button
+              type="button"
+              mat-icon-button
+              [matMenuTriggerFor]="userMenu"
+              aria-label="Mi perfil"
+            >
               <mat-icon aria-hidden="true">account_circle</mat-icon>
             </button>
             <mat-menu #userMenu="matMenu">

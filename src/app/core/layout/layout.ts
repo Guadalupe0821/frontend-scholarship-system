@@ -6,7 +6,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterOutlet } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { Breadcrumb, SideNav, ThemeToggle, Notification, NotificationDropdown, MOCK_NOTIFICATIONS } from '@mean/shared';
+import {
+  Breadcrumb,
+  SideNav,
+  ThemeToggle,
+  Notification,
+  NotificationDropdown,
+  MOCK_NOTIFICATIONS,
+} from '@mean/shared';
 import { Loading, LoadingService } from '../loading';
 
 export interface LayoutToolbarSection {

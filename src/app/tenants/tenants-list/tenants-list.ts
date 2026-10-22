@@ -53,11 +53,17 @@ export class TenantsList implements OnInit {
   }
 
   protected newTenant(): void {
-    this.toastService.info('Modo mock', 'Funcionalidad de alta de cafetería (TODO: conectar con backend)');
+    this.toastService.info(
+      'Modo mock',
+      'Funcionalidad de alta de cafetería (TODO: conectar con backend)',
+    );
   }
 
   private editTenant(tenant: Tenant): void {
-    this.toastService.info('Modo mock', `Editar cafetería: ${tenant.name} (TODO: conectar con backend)`);
+    this.toastService.info(
+      'Modo mock',
+      `Editar cafetería: ${tenant.name} (TODO: conectar con backend)`,
+    );
   }
 
   private toggleStatus(tenant: Tenant): void {

@@ -62,7 +62,9 @@ describe('NotificationDropdown', () => {
 
   it('should show an empty message when there are no notifications', () => {
     openMenu();
-    expect(document.querySelector('.notification-empty')?.textContent?.trim()).toBe('No hay notificaciones');
+    expect(document.querySelector('.notification-empty')?.textContent?.trim()).toBe(
+      'No hay notificaciones',
+    );
   });
 
   it('should render each notification with icon, name, date and text', () => {
@@ -77,11 +79,15 @@ describe('NotificationDropdown', () => {
     expect(item.querySelector('.notification-name')?.textContent).toBe('Alerta de cuenta');
     const expectedDate = formatDate(notifications[0].date, 'short', TestBed.inject(LOCALE_ID));
     expect(item.querySelector('.notification-date')?.textContent).toBe(expectedDate);
-    expect(item.querySelector('.notification-text')?.textContent).toBe('Se detecto un inicio de sesion inusual');
+    expect(item.querySelector('.notification-text')?.textContent).toBe(
+      'Se detecto un inicio de sesion inusual',
+    );
   });
 
   it('should use a fallback icon when the notification has none', () => {
-    fixture.componentRef.setInput('notifications', [{ name: 'Sin icono', date: new Date(), text: 'Mensaje' }]);
+    fixture.componentRef.setInput('notifications', [
+      { name: 'Sin icono', date: new Date(), text: 'Mensaje' },
+    ]);
     openMenu();
 
     expect(document.querySelector('.notification-item-icon')?.textContent).toBe('notifications');

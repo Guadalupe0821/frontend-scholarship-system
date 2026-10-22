@@ -36,7 +36,11 @@ export class Breadcrumb {
     return this.buildBreadcrumbs(this.activatedRoute.root);
   });
 
-  private buildBreadcrumbs(route: ActivatedRoute, url = '', breadcrumbs: BreadcrumbItem[] = []): BreadcrumbItem[] {
+  private buildBreadcrumbs(
+    route: ActivatedRoute,
+    url = '',
+    breadcrumbs: BreadcrumbItem[] = [],
+  ): BreadcrumbItem[] {
     const primaryChild = route.children.find((child) => child.outlet === 'primary');
     if (!primaryChild || !primaryChild.snapshot) return breadcrumbs;
 
@@ -53,7 +57,11 @@ export class Breadcrumb {
     return routeSegment ? `${currentUrl}/${routeSegment}` : currentUrl;
   }
 
-  private addBreadcrumbItems(routeData: RouteData, routeUrl: string, breadcrumbs: BreadcrumbItem[]): void {
+  private addBreadcrumbItems(
+    routeData: RouteData,
+    routeUrl: string,
+    breadcrumbs: BreadcrumbItem[],
+  ): void {
     if (routeData.breadcrumbParent && routeData.breadcrumbParentUrl) {
       breadcrumbs.push({
         label: routeData.breadcrumbParent,

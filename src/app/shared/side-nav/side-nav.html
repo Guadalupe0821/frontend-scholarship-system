@@ -2,7 +2,12 @@
 
 <mat-nav-list>
   @for (item of visibleItems(); track item.route + item.title) {
-    <app-menu-item [title]="item.title" [icon]="item.icon" [route]="item.route" [subItems]="item.subItems" />
+    <app-menu-item
+      [title]="item.title"
+      [icon]="item.icon"
+      [route]="item.route"
+      [subItems]="item.subItems"
+    />
   }
 </mat-nav-list>
 

@@ -11,7 +11,15 @@ import { TENANTS_MOCK } from '../../core/mock/tenants.mock';
 
 @Component({
   selector: 'app-users-list',
-  imports: [PageHeader, Table, MatButtonModule, MatIconModule, MatFormFieldModule, MatSelectModule, FormsModule],
+  imports: [
+    PageHeader,
+    Table,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+  ],
   templateUrl: './users-list.html',
   styleUrl: './users-list.scss',
 })
@@ -75,10 +83,16 @@ export class UsersList implements OnInit {
   }
 
   protected newUser(): void {
-    this.toastService.info('Modo mock', 'Funcionalidad de alta de usuario (TODO: conectar con backend)');
+    this.toastService.info(
+      'Modo mock',
+      'Funcionalidad de alta de usuario (TODO: conectar con backend)',
+    );
   }
 
   private editUser(user: MockUser): void {
-    this.toastService.info('Modo mock', `Editar usuario: ${user.fullName} (TODO: conectar con backend)`);
+    this.toastService.info(
+      'Modo mock',
+      `Editar usuario: ${user.fullName} (TODO: conectar con backend)`,
+    );
   }
 }

@@ -2,7 +2,9 @@
   <mat-card class="login-card">
     <mat-card-header class="login-header">
       <mat-card-title class="login-title">Sistema de Becas Alimentarias</mat-card-title>
-      <mat-card-subtitle class="login-subtitle">Registro y Autenticación de Alumnos Becarios</mat-card-subtitle>
+      <mat-card-subtitle class="login-subtitle"
+        >Registro y Autenticación de Alumnos Becarios</mat-card-subtitle
+      >
     </mat-card-header>
 
     <mat-card-content>
@@ -37,7 +39,13 @@
           }
         </mat-form-field>
 
-        <button mat-flat-button color="primary" type="submit" class="login-button" [disabled]="loading()">
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          class="login-button"
+          [disabled]="loading()"
+        >
           @if (loading()) {
             <mat-icon class="spinning">autorenew</mat-icon>
           }

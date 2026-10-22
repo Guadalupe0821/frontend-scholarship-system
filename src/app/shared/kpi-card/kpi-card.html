@@ -13,8 +13,14 @@
           }
         </div>
         @if (change()) {
-          <span class="kpi-change" [class.kpi-change--up]="trendUp()" [class.kpi-change--down]="!trendUp()">
-            <mat-icon aria-hidden="true">{{ trendUp() ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+          <span
+            class="kpi-change"
+            [class.kpi-change--up]="trendUp()"
+            [class.kpi-change--down]="!trendUp()"
+          >
+            <mat-icon aria-hidden="true">{{
+              trendUp() ? 'arrow_upward' : 'arrow_downward'
+            }}</mat-icon>
             {{ changeLabel() }}
           </span>
         }

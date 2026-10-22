@@ -1,3 +1,5 @@
+import { Role } from '@mean/auth';
+
 export interface MenuItem {
   title: string;
   icon: string;
@@ -5,7 +7,7 @@ export interface MenuItem {
   sections?: string[];
   permissions?: string;
   subItems?: MenuItem[];
-  roles?: string[];
+  roles?: Role[];
 }
 
 export const MenuItems: MenuItem[] = [

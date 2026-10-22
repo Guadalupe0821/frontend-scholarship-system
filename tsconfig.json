@@ -21,7 +21,7 @@
       "@mean/helpers": ["./src/app/helpers"],
       "@mean/auth": ["./src/app/core/auth"],
       "@mean/layout": ["./src/app/core/layout"]
-    },
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

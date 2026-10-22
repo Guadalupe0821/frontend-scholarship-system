@@ -18,7 +18,8 @@ export const routes: Routes = [
       },
       {
         path: 'dashboard',
-        loadComponent: () => import('./scholarship-system/dashboard/dashboard').then((m) => m.Dashboard),
+        loadComponent: () =>
+          import('./scholarship-system/dashboard/dashboard').then((m) => m.Dashboard),
         data: {
           breadcrumb: 'Dashboard',
         },
@@ -35,8 +36,7 @@ export const routes: Routes = [
       },
       {
         path: 'users',
-        loadComponent: () =>
-          import('./users/users-list/users-list').then((m) => m.UsersList),
+        loadComponent: () => import('./users/users-list/users-list').then((m) => m.UsersList),
         canActivate: [authGuard],
         data: {
           roles: ['Superadmin', 'Admin'],

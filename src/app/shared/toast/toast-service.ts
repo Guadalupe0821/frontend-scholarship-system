@@ -1,7 +1,13 @@
 import { inject, Service } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Toast } from './toast';
-import { TOAST_DURATION, TOAST_ERROR_DURATION, TOAST_PANEL_CLASS, ToastData, ToastType } from './toast.model';
+import {
+  TOAST_DURATION,
+  TOAST_ERROR_DURATION,
+  TOAST_PANEL_CLASS,
+  ToastData,
+  ToastType,
+} from './toast.model';
 
 @Service()
 export class ToastService {

@@ -14,7 +14,13 @@
 
   <!-- Table -->
   <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2" (matSortChange)="changeSort($event)">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      class="mat-elevation-z2"
+      (matSortChange)="changeSort($event)"
+    >
       <!-- Selection Column -->
       @if (showSelection()) {
         <ng-container matColumnDef="select">
@@ -46,12 +52,18 @@
             @if (column.type === 'status') {
               <span
                 class="status-badge"
-                [attr.data-status]="column.statusValue ? column.statusValue(row) : getCellValue(row, column)"
+                [attr.data-status]="
+                  column.statusValue ? column.statusValue(row) : getCellValue(row, column)
+                "
               >
                 {{ getCellValue(row, column) }}
               </span>
             } @else if (column.navigable) {
-              <button type="button" class="cell-content navigable-cell" (click)="emitCellClick(column, row, $event)">
+              <button
+                type="button"
+                class="cell-content navigable-cell"
+                (click)="emitCellClick(column, row, $event)"
+              >
                 <span [class.bold-text]="column.bold">{{ getCellValue(row, column) }}</span>
                 @if (getSublabelValue(row, column)) {
                   <span class="sublabel">{{ getSublabelValue(row, column) }}</span>
@@ -108,7 +120,12 @@
       }
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns()"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns()" (click)="emitRowClick(row)" class="table-row"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns()"
+        (click)="emitRowClick(row)"
+        class="table-row"
+      ></tr>
     </table>
   </div>
 

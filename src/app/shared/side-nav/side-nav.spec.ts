@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
-
 import { SideNav } from './side-nav';
 
 describe('SideNav', () => {
@@ -11,7 +10,10 @@ describe('SideNav', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SideNav],
-      providers: [provideRouter([]), { provide: Keycloak, useValue: { logout: () => Promise.resolve() } }],
+      providers: [
+        provideRouter([]),
+        { provide: Keycloak, useValue: { logout: () => Promise.resolve() } },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SideNav);

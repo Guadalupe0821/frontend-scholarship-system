@@ -11,7 +11,14 @@ import { ToastService } from '@mean/shared';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
+  imports: [
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -43,7 +50,10 @@ export class Login {
     this.authService.login(this.loginForm.value).subscribe({
       next: () => {
         this.loading.set(false);
-        this.toastService.success('Inicio de sesión exitoso', 'Bienvenido al Sistema de Becas Alimentarias');
+        this.toastService.success(
+          'Inicio de sesión exitoso',
+          'Bienvenido al Sistema de Becas Alimentarias',
+        );
         void this.router.navigate(['/dashboard']);
       },
       error: (error) => {

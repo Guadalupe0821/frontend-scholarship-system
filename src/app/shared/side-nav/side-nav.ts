@@ -21,7 +21,7 @@ export class SideNav {
     return MenuItems.filter((item) => {
       if (item.sections && !item.sections.includes(section)) return false;
       if (item.roles && item.roles.length > 0) {
-        return this.authService.hasAnyRole(item.roles as any);
+        return this.authService.hasAnyRole(item.roles);
       }
       return true;
     });

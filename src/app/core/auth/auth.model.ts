@@ -28,5 +28,5 @@ export interface JwtPayload {
   tenantId?: string;
   tenantName?: string;
   exp?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }

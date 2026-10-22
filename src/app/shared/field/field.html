@@ -12,19 +12,33 @@
           [maxlength]="field().maxLength ?? null"
           (input)="onInputChange($event)"
         />
-        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+        @if (
+          formGroup().get(field().name)?.hasError('required') &&
+          formGroup().get(field().name)?.touched
+        ) {
           <mat-error>
-            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+            {{
+              field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido'
+            }}
           </mat-error>
         }
-        @if (formGroup().get(field().name)?.hasError('pattern') && formGroup().get(field().name)?.touched) {
+        @if (
+          formGroup().get(field().name)?.hasError('pattern') &&
+          formGroup().get(field().name)?.touched
+        ) {
           <mat-error>
-            {{ field().errorMessages?.['pattern'] || 'El formato de ' + field().label + ' no es valido' }}
+            {{
+              field().errorMessages?.['pattern'] ||
+                'El formato de ' + field().label + ' no es valido'
+            }}
           </mat-error>
         }
         @if (formGroup().get(field().name)?.hasError('maxlength')) {
           <mat-error>
-            {{ field().errorMessages?.['maxlength'] || 'El campo ' + field().label + ' es demasiado largo' }}
+            {{
+              field().errorMessages?.['maxlength'] ||
+                'El campo ' + field().label + ' es demasiado largo'
+            }}
           </mat-error>
         }
       </mat-form-field>
@@ -51,19 +65,33 @@
         >
           <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
-        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+        @if (
+          formGroup().get(field().name)?.hasError('required') &&
+          formGroup().get(field().name)?.touched
+        ) {
           <mat-error>
-            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+            {{
+              field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido'
+            }}
           </mat-error>
         }
-        @if (formGroup().get(field().name)?.hasError('minlength') && formGroup().get(field().name)?.touched) {
+        @if (
+          formGroup().get(field().name)?.hasError('minlength') &&
+          formGroup().get(field().name)?.touched
+        ) {
           <mat-error>
-            {{ field().errorMessages?.['minlength'] || 'El campo ' + field().label + ' es demasiado corto' }}
+            {{
+              field().errorMessages?.['minlength'] ||
+                'El campo ' + field().label + ' es demasiado corto'
+            }}
           </mat-error>
         }
         @if (formGroup().get(field().name)?.hasError('maxlength')) {
           <mat-error>
-            {{ field().errorMessages?.['maxlength'] || 'El campo ' + field().label + ' es demasiado largo' }}
+            {{
+              field().errorMessages?.['maxlength'] ||
+                'El campo ' + field().label + ' es demasiado largo'
+            }}
           </mat-error>
         }
       </mat-form-field>
@@ -80,12 +108,19 @@
           [maxlength]="field().maxLength ?? null"
           (input)="onInputChange($event)"
         />
-        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+        @if (
+          formGroup().get(field().name)?.hasError('required') &&
+          formGroup().get(field().name)?.touched
+        ) {
           <mat-error>
-            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+            {{
+              field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido'
+            }}
           </mat-error>
         }
-        @if (formGroup().get(field().name)?.hasError('email') && formGroup().get(field().name)?.touched) {
+        @if (
+          formGroup().get(field().name)?.hasError('email') && formGroup().get(field().name)?.touched
+        ) {
           <mat-error>
             {{ field().errorMessages?.['email'] || 'Ingrese un email válido' }}
           </mat-error>
@@ -105,9 +140,14 @@
           [max]="field().max ?? null"
           (input)="onInputChange($event)"
         />
-        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+        @if (
+          formGroup().get(field().name)?.hasError('required') &&
+          formGroup().get(field().name)?.touched
+        ) {
           <mat-error>
-            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+            {{
+              field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido'
+            }}
           </mat-error>
         }
         @if (formGroup().get(field().name)?.hasError('min')) {
@@ -153,9 +193,14 @@
         />
         <mat-datepicker-toggle matSuffix [for]="datepicker" />
         <mat-datepicker #datepicker />
-        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+        @if (
+          formGroup().get(field().name)?.hasError('required') &&
+          formGroup().get(field().name)?.touched
+        ) {
           <mat-error>
-            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+            {{
+              field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido'
+            }}
           </mat-error>
         }
       </mat-form-field>
@@ -172,9 +217,14 @@
             <mat-option [value]="option.value">{{ option.label }}</mat-option>
           }
         </mat-select>
-        @if (formGroup().get(field().name)?.hasError('required') && formGroup().get(field().name)?.touched) {
+        @if (
+          formGroup().get(field().name)?.hasError('required') &&
+          formGroup().get(field().name)?.touched
+        ) {
           <mat-error>
-            {{ field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido' }}
+            {{
+              field().errorMessages?.['required'] || 'El campo ' + field().label + ' es requerido'
+            }}
           </mat-error>
         }
       </mat-form-field>
